@@ -1,11 +1,10 @@
 #include <iostream>
 #include <ctime>
-#include <string>
 
 void fill_lines_and_columns(int* nRef)
 {
 	std::cin >> *nRef;
-	while (std::cin.fail()) 
+	while (std::cin.fail())
 	{
 		std::cin.clear();
 		std::cin.ignore(32767, '\n');
@@ -14,36 +13,36 @@ void fill_lines_and_columns(int* nRef)
 	}
 }
 
-void malloxMatrix(double**& a, int* line_A, int* column_A)
+void malloxMatrix(double**& matrix, int* line, int* column)
 {
-	a = new double* [*line_A];
-	for (int i = 0; i < *line_A; i++)//Ввожу элементы первой матрицы
+	matrix = new double* [*line];
+	for (int i = 0; i < *line; i++)//Ввожу элементы первой матрицы
 	{
-		a[i] = new double[*column_A];
+		matrix[i] = new double[*column];
 	}
 }
 
-void fillMatrixA(double**& a, int* line_A, int* column_A)
+void fillMatrix(double**& matrix, int* line, int* column)
 {
-	for (int i = 0; i < *line_A; i++)//Ввожу элементы первой матрицы
+	for (int i = 0; i < *line; i++)
 	{
-		for (int j = 0; j < *column_A; j++)
+		for (int j = 0; j < *column; j++)
 		{
-			std::cout << "a[" << i << "][" << j << "]= ";
-			std::cin >> a[i][j];
+			std::cout << "[" << i << "][" << j << "]= ";
+			std::cin >> matrix[i][j];
 		}
 	}
 }
 
-void fillMatrixRand(double**& a, int* line_A, int* column_A)
+void fillMatrixRand(double**& matrix, int* line, int* column)
 {
-	for (int i = 0; i < *line_A; i++)//Ввожу элементы первой матрицы
+	for (int i = 0; i < *line; i++)
 	{
-		for (int j = 0; j < *column_A; j++)
+		for (int j = 0; j < *column; j++)
 		{
-			std::cout << "a[" << i << "][" << j << "]= ";
-			a[i][j] = rand();
-			std::cout << a[i][j] << std::endl;
+			std::cout << "[" << i << "][" << j << "]= ";
+			matrix[i][j] = rand();
+			std::cout << matrix[i][j] << std::endl;
 		}
 	}
 }
@@ -56,7 +55,7 @@ int main()
 	int line_B;		//строка 2-ой матрицы
 	int column_A;	//столбец 1-ой матрицы
 	int column_B;	//столбец 2-ой матрицы
-	double** a{}, ** b, ** c;
+	double** a, ** b, ** c;
 
 	do
 	{
@@ -78,7 +77,7 @@ int main()
 	if (qestionsOfFill == 1)
 	{
 		std::cout << "Введите элементы матрицы" << std::endl;
-		fillMatrixA(a, &line_A, &column_A);
+		fillMatrix(a, &line_A, &column_A);
 	}
 	else if (qestionsOfFill == 2)
 	{
@@ -104,7 +103,7 @@ int main()
 	if (qestionsOfFill_B == 1)
 	{
 		std::cout << "Введите элементы матрицы" << std::endl;
-		fillMatrixA(b, &line_B, &column_B);
+		fillMatrix(b, &line_B, &column_B);
 	}
 	if (qestionsOfFill_B == 2)
 	{
