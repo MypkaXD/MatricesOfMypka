@@ -29,23 +29,23 @@ int qestionsOfFill()
 	return qestionsOfFill;
 }
 
-void malloxMatrix(double*** a, int* line_A, int* column_A)
+void malloxMatrix(double**& a, int* line_A, int* column_A)
 {
-	a = new double** [*line_A];
+	a = new double* [*line_A];
 	for (int i = 0; i < *line_A; i++)//Ввожу элементы первой матрицы
 	{
-		a[i] = new double*[*column_A];
+		a[i] = new double[*column_A];
 	}
 }
 
-void fillMatrixA(double*** a, int* line_A, int* column_A)
+void fillMatrixA(double**& a, int* line_A, int* column_A)
 {
 	for (int i = 0; i < *line_A; i++)//Ввожу элементы первой матрицы
 	{
 		for (int j = 0; j < *column_A; j++)
 		{
 			std::cout << "a[" << i << "][" << j << "]= ";
-			std::cin >> *a[i][j];
+			std::cin >> a[i][j];
 		}
 	}
 }
@@ -77,8 +77,8 @@ int main()
 	if (qestionsOfFill() == 1)
 	{
 		std::cout << "Введите элементы матрицы" << std::endl;
-		malloxMatrix(&a, &line_A, &column_A);
-		fillMatrixA(&a, &line_A, &column_A);
+		malloxMatrix(a, &line_A, &column_A);
+		fillMatrixA(a, &line_A, &column_A);
 	}
 
 
