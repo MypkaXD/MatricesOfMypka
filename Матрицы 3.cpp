@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <ctime>
 #include <string>
 
@@ -31,10 +31,10 @@ int qestionsOfFill()
 
 void malloxMatrix(double*** a, int* line_A, int* column_A)
 {
-	*a = new double* [*line_A];
+	a = new double** [*line_A];
 	for (int i = 0; i < *line_A; i++)//Ввожу элементы первой матрицы
 	{
-		*a[i] = new double[*column_A];
+		a[i] = new double*[*column_A];
 	}
 }
 
@@ -58,7 +58,7 @@ int main()
 	int line_B;		//строка 2-ой матрицы
 	int column_A;	//столбец 1-ой матрицы
 	int column_B;	//столбец 2-ой матрицы
-	double** a, ** b, ** c;
+	double** a{}, ** b, ** c;
 
 	do
 	{
